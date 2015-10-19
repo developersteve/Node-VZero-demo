@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    h1= title
+    div.well
+        form.form-horizontal(action='/process', method='POST', role='form', id='braintree-payment-form')
+            div.form-group
+                label.col-sm-3.control-label Amount (in USD)
+                div.col-sm-9
+                    input.form-control(type='text', name='amount', placeholder='6.66')
+            div.form-group
+                label.col-sm-3.control-label Card Number
+                div.col-sm-9
+                    input.form-control(type='text', size='20', autocomplete='off', data-encrypted-name='number', placeholder='XXXX XXXX XXXX XXXX')
+            div.form-group
+                label.col-sm-3.control-label CVV
+                div.col-sm-9
+                    input.form-control(type='text', size='4', autocomplete='off', data-encrypted-name='cvv', placeholder='XXX')
+            div.form-group
+                label.col-sm-3.control-label Expiration Date
+                div.col-sm-9
+                    input.form-control(type='text', data-encrypted-name='expiration_date', placeholder='MM/YYYY')
+            div.form-group
+                div.col-sm-9.col-sm-offset-3
+                    input.btn.btn-primary(type='submit', id='submit')
+    script(src='/javascripts/braintree.js', type='text/javascript')
+    script.
+        var braintree = Braintree.create('MIIBCgKCAQEA8ror86dgkI55PGc1Fq6kRhDzZAIZszELcFIjMHJ5LwXZIpH+ReC9yQpOZkiiY/K3Q1+mZBjrDXf/yu77hJ4Hs/yr4lUEo4c5zGpEdsVdWR2Ndw+yr925ODFDYiKU9W8xIBgbytNky+wKgiC0M7PlL7mzmmNEQZGDuyyygNDwmnSAoxVllne6KXxJt1akxPsdSzSiResmNlHLzwVf3gpQ2hA8GBq4m1B0EXI0oXnh2VLM9SiSDym6Xu7ad2089ct2cA11ODzubigkFD8sxrz/a4a5RWjf0rWc++ihDEkAWFZD6f395LMVAUdpf8QtH799vUEcDYqG4YOnoAQ5HXENJQIDAQAB')
+        braintree.onSubmitEncryptForm('braintree-payment-form')
