@@ -25,7 +25,7 @@ This demo uses
 
 ## Running the test
 
-* Requirement: [Mocha](http://visionmedia.github.io/mocha/)
+* Requirement: [Mocha](http://mochajs.org/)
 * Run `npm install -g mocha` to install all dependencies
 * Run `mocha` to test the app
 
